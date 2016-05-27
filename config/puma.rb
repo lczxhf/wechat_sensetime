@@ -15,6 +15,16 @@ port        ENV.fetch("PORT") { 3000 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
+
+app_name = "wechat_sensetime"
+application_path = "/projects/#{app_name}"
+pidfile "#{application_path}/shared/tmp/pids/puma.pid"
+state_path "#{application_path}/shared/tmp/sockets/puma.state"
+stdout_redirect "#{application_path}/shared/log/puma.stdout.log", "#{application_path}/shared/log/puma.stderr.log"
+bind "unix://#{application_path}/shared/tmp/sockets/#{app_name}.sock"
+activate_control_app "unix://#{application_path}/shared/tmp/sockets/pumactl.sock"
+daemonize true
+
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.

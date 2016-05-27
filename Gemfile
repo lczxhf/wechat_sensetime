@@ -1,8 +1,8 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.rc1', '< 5.1'
+gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
@@ -21,14 +21,14 @@ gem 'rqrcode_png'
 gem 'multipart-post'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'rails_admin'
+#gem 'rails_admin', git: "https://github.com/sferik/rails_admin.git"
 gem 'rest-client'
 gem 'sidekiq'
 gem 'sidetiq'
-gem 'sinatra',:require=> nil
+gem 'sinatra', github: 'sinatra/sinatra',require: false
 gem 'redis'
 gem 'hiredis'
-gem 'exception_notification'
+#gem 'exception_notification'
 gem 'settingslogic'
 gem 'simple_form'
 gem 'kaminari'
