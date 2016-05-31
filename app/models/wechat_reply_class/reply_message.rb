@@ -1,4 +1,5 @@
 module WechatReplyClass
+  module ReplyMessage
   class ReplyMessage
 	require 'roxml'
 	include ROXML
@@ -193,4 +194,5 @@ module WechatReplyClass
       super.to_xml(:encoding => 'UTF-8', :indent => 0, :save_with => 0)
     end
   end
+end
 end
