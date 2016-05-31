@@ -27,6 +27,8 @@ gem 'sidekiq'
 gem 'sidetiq'
 gem 'sinatra', github: 'sinatra/sinatra',require: false
 gem 'redis'
+gem 'redis-rails'
+gem 'redis-objects'
 gem 'hiredis'
 #gem 'exception_notification'
 gem 'settingslogic'
@@ -34,7 +36,6 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-gem 'redis-objects'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
