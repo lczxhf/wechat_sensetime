@@ -1,1 +1,1 @@
-MYREDIS = Redis.new(:driver => :hiredis,:db=>1)
+# MYREDIS = Redis.new(:driver => :hiredis,:db=>1)

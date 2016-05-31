@@ -26,10 +26,14 @@ gem 'rest-client'
 gem 'sidekiq'
 gem 'sidetiq'
 gem 'sinatra', github: 'sinatra/sinatra',require: false
-gem 'redis'
+gem 'redis', :require => ["redis", "redis/connection/hiredis"]
+gem 'redis-store'
 gem 'redis-rails'
 gem 'redis-objects'
+gem 'rack-cache'
+gem 'redis-rack-cache'
 gem 'hiredis'
+gem 'second_level_cache', '~> 2.2.0'
 #gem 'exception_notification'
 gem 'settingslogic'
 gem 'simple_form'
@@ -46,7 +50,7 @@ gem 'jbuilder', '~> 2.0'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'connection_pool'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
