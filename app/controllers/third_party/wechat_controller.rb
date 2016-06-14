@@ -11,6 +11,7 @@ class ThirdParty::WechatController < ThirdParty::ApplicationController
 	end
 
 	def receive
+		puts params
 		if result = ThirdParty.get_content(request.body.read,params[:timestamp],params[:nonce],params[:msg_signature])
 			case result.xml.InfoType.content.to_s
 				when "component_verify_ticket" then
