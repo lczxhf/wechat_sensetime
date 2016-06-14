@@ -23,10 +23,10 @@ module WechatSensetime
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths += %W(#{config.root}/lib)
     
-    config.cache_store = :redis_store, "redis://172.17.0.1:36379/2/cache", { expires_in: 90.minutes }
+    config.cache_store = :redis_store, "redis://127.0.0.1:6379/2/cache", { expires_in: 90.minutes }
     config.action_dispatch.rack_cache = {
-        metastore: "redis://172.17.0.1:36379/1/metastore",
-        entitystore: "redis://172.17.0.1:36379/1/entitystore",
+        metastore: "redis://127.0.0.1:6379/1/metastore",
+        entitystore: "redis://127.0.0.1:6379/1/entitystore",
         verbose: true
     }
     config.time_zone = 'Beijing'

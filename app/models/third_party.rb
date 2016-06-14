@@ -3,14 +3,10 @@ class ThirdParty
 	require 'base64' 
 	require 'net/http'
   require 'nokogiri'
-	#@token='tiandiwang'
-	#@@appid='wx31aa7bfa0ae30872'
-	#@@appsecret='0c79e1fa963cd80cc0be99b20a18faeb'
-	#@@encryptkey='IuvWqPHol3TrXsLYMuOKisVFjewCwIUJBJ6ucMBKjp8'
-	#@@wechat_info=WechatInfo.first	
+	class << self
 
   #验证是否是微信发来的消息
-	def self.check_info(timestamp,nonce,msg_encrypt,signature)
+	def check_info(timestamp,nonce,msg_encrypt,signature)
 		str=[TOKEN,timestamp,nonce,msg_encrypt].sort.join
 		sha1=Digest::SHA1.hexdigest(str.to_s)
 		if signature == sha1
@@ -20,7 +16,7 @@ class ThirdParty
  	        end	
 	end
 		
-	def  self.get_access_token()
+	def get_access_token()
     if token=Rails.cache.read(:access_token)
     else  
 		  ticket=Rails.cache.read("ticket")
@@ -35,7 +31,7 @@ class ThirdParty
 	end
 	
   #向微信发起post请求
-	def self.sent_to_wechat(url,body)
+	def sent_to_wechat(url,body)
 		 uri = URI(url)
      Net::HTTP.start(uri.host, uri.port,:use_ssl => uri.scheme == 'https') do |http|
      request= Net::HTTP::Post.new(uri,{'Content-Type'=>'application/json'})
@@ -47,7 +43,7 @@ class ThirdParty
 	end
 	
   #向微信发起get请求
-	def self.get_to_wechat(url)
+	def get_to_wechat(url)
         uri = URI(url)
         Net::HTTP.start(uri.host, uri.port,:use_ssl => uri.scheme == 'https') do |http|
           request= Net::HTTP::Get.new(uri)
@@ -56,14 +52,13 @@ class ThirdParty
         end
   end
 
-  def self.get_pre_auth_code
+  def get_pre_auth_code
       url = 'https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token='+get_access_token
       body = '{"component_appid":"'+APPID+'"}'
       result=JSON.parse(sent_to_wechat(url,body))
-      result
   end
 
-  def self.authorize(auth_code)
+  def authorize(auth_code)
       url='https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token='+Rails.cache.read(:access_token)
       body='{"component_appid":"'+APPID+'","authorization_code":"'+auth_code+'"}'
       result=ThirdParty.sent_to_wechat(url,body)
@@ -72,35 +67,26 @@ class ThirdParty
   end
 
   #刷新公众号的token
-	def self.refresh_gzh_token(authorizer_appid,authorizer_rtoken)
+	def refresh_gzh_token(authorizer_appid,authorizer_rtoken)
 		url='https://api.weixin.qq.com/cgi-bin/component/api_authorizer_token?component_access_token='+get_access_token
 		body='{"component_appid":"'+APPID+'","authorizer_appid":"'+authorizer_appid+'","authorizer_refresh_token":"'+authorizer_rtoken+'"}'	
 		result=sent_to_wechat(url,body)
 		puts result
 		JSON.parse(result)
-	end
-#	def self.get_pre_auth_code(token)
-#		uri = URI('https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token='+token)
-#                Net::HTTP.start(uri.host, uri.port,:use_ssl => uri.scheme == 'https') do |http|
-#                   request= Net::HTTP::Post.new(uri,{'Content-Type'=>'application/json'})
-#                   request.body='{"component_appid":"'+@@wechat_info.appid+'"}'
-#                        puts request.body
-#                    response=http.request request
-#                    response.body
-#                end
-#	end	
+	end	
 
-  def self.get_content(str,timestamp,nonce,msg_signature)
+  def get_content(str,timestamp,nonce,msg_signature)
       doc=Nokogiri::Slop str
       encrypt=doc.xml.Encrypt.content
       if check_info(timestamp,nonce,encrypt,msg_signature)
-        result = ThirdParty.new.decrypt(encrypt)
+        result = ThirdParty.decrypt(encrypt)
         xml = Nokogiri::Slop result
       else
         xml = nil
       end
       xml
   end
+  
 	def decrypt(text)
       		status = 200
       		text   = Base64.strict_decode64(text)
@@ -149,6 +135,7 @@ class ThirdParty
       pad_chr = amount_to_pad.chr
       "#{text}#{pad_chr * amount_to_pad}"
   end
+end
 end
 
 

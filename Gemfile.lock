@@ -256,9 +256,6 @@ GEM
       celluloid (>= 0.17.3)
       ice_cube (~> 0.13.2)
       sidekiq (>= 4.0.0)
-    simple_form (3.2.1)
-      actionpack (> 4, < 5.1)
-      activemodel (> 4, < 5.1)
     spring (1.7.1)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
@@ -341,7 +338,6 @@ DEPENDENCIES
   settingslogic
   sidekiq
   sidetiq
-  simple_form
   sinatra!
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -354,4 +350,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.1
+   1.12.4

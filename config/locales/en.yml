@@ -20,4 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  returnCode:
+    code_200: 'success'
+    code_10001: 'param error'
+    code_10002: "shop have not authority to authorize wechat "

@@ -1,0 +1,13 @@
+defaults: &defaults
+  after_authorize: "/wechat/home"
+
+development:
+  <<: *defaults
+  website_url: "http://shop.29mins.com"
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  website_url: "http://ads.sensetime.com"

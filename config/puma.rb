@@ -17,9 +17,9 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 
 app_name = "wechat_sensetime"
-application_path = "/projects/#{app_name}"
+application_path = "/home/lzh/#{app_name}"
 pidfile "#{application_path}/tmp/pids/puma.pid"
-state_path "#{application_path}/tmp/sockets/puma.state"
+state_path "#{application_path}/tmp/pids/puma.state"
 stdout_redirect "#{application_path}/log/puma.stdout.log", "#{application_path}/log/puma.stderr.log"
 bind "unix://#{application_path}/tmp/sockets/#{app_name}.sock"
 activate_control_app "unix://#{application_path}/tmp/sockets/pumactl.sock"

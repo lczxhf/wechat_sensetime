@@ -1,0 +1,5 @@
+zh-CN:
+  returnCode:
+    code_200: 'chenggong'
+    code_10001: 'canshu cuowu'
+    code_10002: 'yonghu meiyou quanxian qu shouquan weixin gongzhonghao'
