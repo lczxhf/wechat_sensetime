@@ -17,7 +17,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
     	t.boolean :del, default: false
       t.timestamps
 
-      t.index :openid
     end
   end
 end

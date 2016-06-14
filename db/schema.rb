@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(version: 20160614070612) do
     t.boolean  "del",              default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-    t.index ["openid"], name: "index_users_on_openid", length: {"openid"=>191}, using: :btree
     t.index ["sangna_config_id"], name: "index_users_on_sangna_config_id", using: :btree
     t.index ["shop_id"], name: "index_users_on_shop_id", using: :btree
   end
