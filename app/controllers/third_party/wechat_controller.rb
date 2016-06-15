@@ -6,7 +6,7 @@ class ThirdParty::WechatController < ThirdParty::ApplicationController
  	 		render :home,:layout=>false
  	 	else
  	 			#TODO
- 	 			render plian: I18n.t "returnCode.code_10002"
+ 	 			render plain: I18n.t("returnCode.code_10002")
  	 	end
 	end
 
@@ -21,7 +21,7 @@ class ThirdParty::WechatController < ThirdParty::ApplicationController
 			   		Rails.cache.write(:pre_code,ThirdParty.get_pre_auth_code["pre_auth_code"])
 				when "unauthorized" then
 			   		appid = result.xml.AuthorizerAppid.content.to_s
-			   		GzhConfig.find_by_appid(appid).cancel_authorize
+			   		GzhConfig.fetch_cache(appid:appid).cancel_authorize
 			end
 		else
 			puts 'error'

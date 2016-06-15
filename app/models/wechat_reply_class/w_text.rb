@@ -17,7 +17,6 @@ class WText
 
     #全网发布时候的检测
     def release_completely
-	puts '123'
 	reply_text_message "TESTCOMPONENT_MSG_TYPE_TEXT_callback"
     end
 

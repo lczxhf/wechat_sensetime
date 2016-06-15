@@ -1,7 +1,9 @@
 class GzhConfig < ApplicationRecord
+	acts_as_cached(version:1,expires_in: 1.day)
 	belongs_to :shop
 	has_many :img_media
 	has_many :new_media
+	has_one :gzh_info
 
 	after_find :check_token_expire
 

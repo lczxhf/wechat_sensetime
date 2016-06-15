@@ -3,7 +3,7 @@ class WEvent
 	include ReplyWeixinMessage
 	def initialize(hash,appid)
       @weixin_message = Message.factory hash
-      @sangna_config = SangnaConfig.find_by_appid(appid)
+      @sangna_config = GzhConfig.fetch_cache(appid: appid)
     end
 
     def handle

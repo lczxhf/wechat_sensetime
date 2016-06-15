@@ -78,6 +78,7 @@ class ThirdParty
   def get_content(str,timestamp,nonce,msg_signature)
       doc=Nokogiri::Slop str
       encrypt=doc.xml.Encrypt.content
+	puts encrypt
       if check_info(timestamp,nonce,encrypt,msg_signature)
         result = ThirdParty.decrypt(encrypt)
         xml = Nokogiri::Slop result
