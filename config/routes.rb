@@ -12,4 +12,12 @@ Rails.application.routes.draw do
   	get "wechat/oauth2" => "wechat#oauth2"
   	get "wechat/authorize" => "wechat#authorize"
  end
+
+ scope module: "api" do
+  scope module: "v1" do
+    namespace :fashion do
+	get "weixin/upload" => "weixin#upload"
+    end
+  end
+ end
 end

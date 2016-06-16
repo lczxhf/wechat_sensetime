@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614070612) do
+ActiveRecord::Schema.define(version: 20160615124039) do
 
   create_table "gzh_configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer  "shop_id"
@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(version: 20160614070612) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer  "shop_id"
-    t.integer  "sangna_config_id"
     t.string   "openid"
     t.string   "nickname"
     t.boolean  "sex"
@@ -112,10 +111,11 @@ ActiveRecord::Schema.define(version: 20160614070612) do
     t.string   "language"
     t.string   "headimgurl"
     t.integer  "subscribe_time"
-    t.boolean  "del",              default: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.index ["sangna_config_id"], name: "index_users_on_sangna_config_id", using: :btree
+    t.boolean  "del",            default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "gzh_config_id"
+    t.index ["gzh_config_id"], name: "index_users_on_gzh_config_id", using: :btree
     t.index ["shop_id"], name: "index_users_on_shop_id", using: :btree
   end
 

@@ -1,6 +1,6 @@
 class Shop < ApplicationRecord
-	has_many :gzh_configs
-	has_many :gzh_infos
+	has_one :gzh_config
+	has_one :gzh_info
 	has_many :users
 	has_many :scan_records
 	enum status: [:probation,:normal,:expire]

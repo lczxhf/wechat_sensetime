@@ -41,6 +41,9 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+gem 'active_model_serializers', "~>0.10.0"
+gem 'rails_param'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.x'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

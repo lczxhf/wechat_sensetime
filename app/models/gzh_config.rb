@@ -4,6 +4,7 @@ class GzhConfig < ApplicationRecord
 	has_many :img_media
 	has_many :new_media
 	has_one :gzh_info
+	has_many :users
 
 	after_find :check_token_expire
 
