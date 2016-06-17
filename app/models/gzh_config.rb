@@ -6,6 +6,7 @@ class GzhConfig < ApplicationRecord
 	has_one :gzh_info
 	has_many :users
 
+	default_scope {where(del: false)}
 	after_find :check_token_expire
 
 	class << self

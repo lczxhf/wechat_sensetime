@@ -1,11 +1,5 @@
 module WechatReplyClass
-class WEvent
-	include ReplyWeixinMessage
-	def initialize(hash,appid)
-      @weixin_message = Message.factory hash
-      @sangna_config = GzhConfig.fetch_cache(appid: appid)
-    end
-
+class WEvent < WechatReplyClass::WBase
     def handle
 	if @weixin_message.ToUserName == 'gh_3c884a361561'
 		reply_text_message @weixin_message.Event+"from_callback"

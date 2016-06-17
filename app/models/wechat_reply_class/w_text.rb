@@ -1,33 +1,23 @@
 module WechatReplyClass
-class WText
-	include ReplyWeixinMessage
-	def initialize(hash,appid)
-      @weixin_message = Message.factory hash
-    end
-
+class WText < WechatReplyClass::WBase
     def handle
-    	case @weixin_message.Content
-    	when 'TESTCOMPONENT_MSG_TYPE_TEXT'
-    		release_completely
-    	else
     		common_handle
-    	end
     end
 
-
-    #全网发布时候的检测
-    def release_completely
-	reply_text_message "TESTCOMPONENT_MSG_TYPE_TEXT_callback"
-    end
 
     def common_handle
-	if @weixin_message.ToUserName == 'gh_3c884a361561'
-		if @weixin_message.Content.include?('QUERY_AUTH_CODE')
-			AutoRelease.perform_in(1.second,@weixin_message.Content.gsub('QUERY_AUTH_CODE:',""),@weixin_message.FromUserName,@weixin_message.Content.gsub('QUERY_AUTH_CODE:',"")+'_from_api')
-		end
-		""
+    		get_img_by_randCode
+    end
+
+    def get_img_by_randCode
+	record = ScanRecord.where(randCode:@weixin_message.Content,shop_id:@gzh_config.shop_id).first
+	if record
+	  if Time.now - record.updated_at > Settings.tmp_media_expire_time
+	     record.upload_media
+	  end
+	  reply_imag_message(generate_image(record.media_id))
 	else
-    	reply_text_message @weixin_message.Content
+	  reply_text_message(I18n.t("returnCode.code_10006"))
 	end
     end
 end

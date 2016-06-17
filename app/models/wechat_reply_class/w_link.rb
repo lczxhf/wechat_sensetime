@@ -1,7 +1,4 @@
 module WechatReplyClass
-class WLink
-	def initialize(hash)
-      @message = Message.factory hash
-    end
+class WLink < WechatReplyClass::WBase
 end
 end

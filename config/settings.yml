@@ -1,9 +1,10 @@
 defaults: &defaults
   after_authorize: "/wechat/home"
+  tmp_media_expire_time: 3.days 
 
 development:
   <<: *defaults
-  website_url: "http://shop.29mins.com"
+  website_url: "http://ads.sensetime.com"
 
 test:
   <<: *defaults

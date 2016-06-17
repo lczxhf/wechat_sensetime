@@ -2,11 +2,11 @@ class ThirdParty::WechatController < ThirdParty::ApplicationController
 	def home
 		shop = Shop.find(params[:id])
 		if shop.can_authorize?
-			@url="https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=#{APPID}&pre_auth_code=#{Rails.cache.read(:pre_code)}&redirect_uri=<%=Settings.website_url%>/third_party/wechat/auth_code?id=#{params[:id]}"
- 	 		render :home,:layout=>false
+			@url="https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=#{APPID}&pre_auth_code=#{Rails.cache.read(:pre_code)}&redirect_uri=#{Settings.website_url}/third_party/wechat/auth_code?id=#{params[:id]}"
+ 	 		render html: @url
  	 	else
- 	 			#TODO
- 	 			render plain: I18n.t("returnCode.code_10002")
+ 	 		#TODO
+ 	 		render plain: I18n.t("returnCode.code_10002")
  	 	end
 	end
 

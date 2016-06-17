@@ -1,7 +1,4 @@
 module WechatReplyClass
-class WImage
-	def initialize(hash)
-      @message = Message.factory hash
-    end
+class WImage < WechatReplyClass::WBase
 end
 end

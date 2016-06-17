@@ -113,7 +113,7 @@ module WechatReplyClass
 
       def encrypt_message(msg_xml)
         # 加密回复的XML
-        encrypt_xml = ThirdParty.new.encrypt(msg_xml).gsub("\n","")
+        encrypt_xml = ThirdParty.encrypt(msg_xml).gsub("\n","")
         # 标准的回包
         generate_encrypt_message(encrypt_xml)
       end

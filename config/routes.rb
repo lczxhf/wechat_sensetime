@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   require 'sidekiq/web'
   require 'sidetiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => '/third_party/sidekiq'
  # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
  namespace :third_party do
  	get "wechat/home" => "wechat#home"
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
  scope module: "api" do
   scope module: "v1" do
     namespace :fashion do
-	get "weixin/upload" => "weixin#upload"
+	post "weixin/upload" => "weixin#upload"
     end
   end
  end
