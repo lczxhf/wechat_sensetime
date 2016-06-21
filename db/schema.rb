@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615124039) do
+ActiveRecord::Schema.define(version: 20160617100523) do
 
   create_table "gzh_configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer  "shop_id"
@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 20160615124039) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["gzh_config_id"], name: "index_img_media_on_gzh_config_id", using: :btree
+  end
+
+  create_table "members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.integer  "user_id"
+    t.integer  "shop_id"
+    t.integer  "api_user_id"
+    t.string   "name"
+    t.string   "image_path"
+    t.boolean  "del",         default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["shop_id"], name: "index_members_on_shop_id", using: :btree
+    t.index ["user_id"], name: "index_members_on_user_id", using: :btree
   end
 
   create_table "new_media", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|

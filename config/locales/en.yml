@@ -28,3 +28,6 @@ en:
     code_10004: "only recept file which type is jpg or jpeg"
     code_10005: 'the shop have not authority to operate'
     code_10006: 'can not find the image by this randcode'
+  api_docs:
+    fashion_weixin_upload_summary: 'upload image what user take from yanzhiji'
+    fashion_weixin_upload_notes: 'notice that size and type of image'

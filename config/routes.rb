@@ -13,10 +13,15 @@ Rails.application.routes.draw do
   	get "wechat/authorize" => "wechat#authorize"
  end
 
+ namespace :page do
+	get "members/new" => "members#new"
+ end
+
  scope module: "api" do
   scope module: "v1" do
     namespace :fashion do
 	post "weixin/upload" => "weixin#upload"
+	get "weixin/download" => "weixin#download"
     end
   end
  end

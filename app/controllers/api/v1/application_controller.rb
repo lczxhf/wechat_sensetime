@@ -30,7 +30,7 @@ class Api::V1::ApplicationController < ApplicationController
 	end
 
 	def check_file(name,opt={})
-	    if params[name.to_sym]
+	    if params[name.to_sym].present?
 		opt.each do |k,v|
 			send("check_"+k.to_s,params[name.to_sym],v) if respond_to?("check_"+k.to_s)
 		end

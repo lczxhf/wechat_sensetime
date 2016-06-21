@@ -15,6 +15,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
 gem 'rack-cors'
+gem 'jwt'
+gem 'swagger-docs'
+gem 'swagger-ui_rails', github: "d4be4st/swagger-ui_rails"
+#gem 'swagger-blocks'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'therubyracer', platforms: :ruby

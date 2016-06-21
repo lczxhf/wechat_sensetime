@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/d4be4st/swagger-ui_rails.git
+  revision: a11774ed2841fcb5c51751a40958f0eff0a5ffb7
+  specs:
+    swagger-ui_rails (2.1.0.alpha.7.1)
+
+GIT
   remote: git://github.com/sinatra/sinatra.git
   revision: 5e9e23621c1f6abbd793b46452cb11ae8ca1277e
   specs:
@@ -119,6 +125,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    jwt (1.5.4)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -281,6 +288,9 @@ GEM
       rails (>= 3)
       sunspot (= 2.2.5)
     sunspot_solr (2.2.5)
+    swagger-docs (0.2.8)
+      activesupport (>= 3, < 5)
+      rails (>= 3, < 5)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -323,6 +333,7 @@ DEPENDENCIES
   hiredis
   jbuilder (~> 2.0)
   jquery-rails
+  jwt
   kaminari
   listen (~> 3.0.5)
   mini_magick
@@ -352,6 +363,8 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sunspot_rails
   sunspot_solr
+  swagger-docs
+  swagger-ui_rails!
   therubyracer
   turbolinks (~> 5.x)
   tzinfo-data
