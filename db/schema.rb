@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617100523) do
+ActiveRecord::Schema.define(version: 20160622081843) do
 
   create_table "gzh_configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer  "shop_id"
@@ -93,15 +93,14 @@ ActiveRecord::Schema.define(version: 20160617100523) do
 
   create_table "scan_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer  "shop_id"
-    t.integer  "img_medium_id"
     t.integer  "user_id"
     t.string   "image_path"
     t.string   "randCode"
     t.string   "pic_url"
-    t.boolean  "del",           default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.index ["img_medium_id"], name: "index_scan_records_on_img_medium_id", using: :btree
+    t.boolean  "del",        default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "media_id"
     t.index ["shop_id"], name: "index_scan_records_on_shop_id", using: :btree
     t.index ["user_id"], name: "index_scan_records_on_user_id", using: :btree
   end
