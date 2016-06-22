@@ -12,12 +12,9 @@ class WText < WechatReplyClass::WBase
     def get_img_by_randCode
 	record = ScanRecord.where(randCode:@weixin_message.Content,shop_id:@gzh_config.shop_id).first
 	if record
-	  if Time.now - record.updated_at > Settings.tmp_media_expire_time
-	     record.upload_media
-	  end
-	  reply_imag_message(generate_image(record.media_id))
+	  reply_imag_message(generate_image(record.get_media_id))
 	else
-	  reply_text_message(I18n.t("returnCode.code_10006"))
+	  reply_text_message(I18n.t("returnCode.code_1006"))
 	end
     end
 end

@@ -1,12 +1,6 @@
 zh-CN:
-  returnCode:
-    code_200: 'chenggong'
-    code_10001: 'canshu chucuo'
-    code_10002: 'yonghu meiyou quanxian qu shouquan weixin gongzhonghao'
-    code_10003: 'ni shang chuan de wenjian chaoguo guding de daxiao'
-    code_10004: 'zhi jieshou jpg he jpeg geshi de tupian'
-    code_10005: "ci gongzhonghao mieyou quanxina caozuo "
-    code_10006: "zhao bu dao duiying ci suijima de zhaopian"
   api_docs:
     fashion_weixin_upload_summary: "shangchuan cong yanzhiji pai de zhaopian"
     fashion_weixin_upload_notes: "tupian yao xiaoyu 1M  geshi wei jpg huo jpeg"
+    fashion_weixin_upload_without_randcode_summary: "shangchuan cong yanzhiji pai de zhaopian,bu xuyao suijima,yinwei saoma qu zhaopian "
+    fashion_weixin_upload_without_randcode_notes: "tupian yao xiaoyu 1M  geshi wei jpg huo jpeg"

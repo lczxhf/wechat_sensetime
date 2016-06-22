@@ -20,14 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  returnCode:
-    code_200: 'success'
-    code_10001: 'param error'
-    code_10002: "shop have not authority to authorize wechat "
-    code_10003: "size of file you upload is out of size"
-    code_10004: "only recept file which type is jpg or jpeg"
-    code_10005: 'the shop have not authority to operate'
-    code_10006: 'can not find the image by this randcode'
   api_docs:
     fashion_weixin_upload_summary: 'upload image what user take from yanzhiji'
     fashion_weixin_upload_notes: 'notice that size and type of image'
+    fashion_weixin_upload_without_randcode_summary: 'upload image what user take from yanzhiji without randcode,because user only get phone by scan qrcode'
+    fashion_weixin_upload_without_randcode_notes: 'notice that size and type of image'

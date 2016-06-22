@@ -6,7 +6,7 @@ class ThirdParty::WechatController < ThirdParty::ApplicationController
  	 		render html: @url
  	 	else
  	 		#TODO
- 	 		render plain: I18n.t("returnCode.code_10002")
+ 	 		render plain: I18n.t("returnCode.code_1002")
  	 	end
 	end
 

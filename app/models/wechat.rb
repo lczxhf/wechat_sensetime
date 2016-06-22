@@ -84,8 +84,7 @@ class Wechat
 		when 'QR_LIMIT_STR_SCENE'
 		    body='{"action_name": "QR_LIMIT_STR_SCENE", "action_info": {"scene": {"scene_str":'+info+'}}}'
 		end
-     result=JSON.parse(ThirdParty.sent_to_wechat(url,body))
-		result
+     result = ThirdParty.sent_to_wechat(url,body)
 	end
 	
 

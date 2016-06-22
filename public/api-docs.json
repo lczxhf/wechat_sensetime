@@ -4,6 +4,10 @@
   "basePath": "http://ads.sensetime.com",
   "apis": [
     {
+      "path": "/api/v1/auth_tokens.{format}",
+      "description": "get token"
+    },
+    {
       "path": "/api/v1/fashion/weixin.{format}",
       "description": "yanzhiji api"
     }

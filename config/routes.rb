@@ -17,11 +17,16 @@ Rails.application.routes.draw do
 	get "members/new" => "members#new"
  end
 
+ namespace :api do
+  scope module: 'v1' do
+    resource :auth_token, only: [:create]
+  end
+ end
  scope module: "api" do
   scope module: "v1" do
     namespace :fashion do
 	post "weixin/upload" => "weixin#upload"
-	get "weixin/download" => "weixin#download"
+	post "weixin/upload_without_randcode" => "weixin#upload_without_randcode"
     end
   end
  end

@@ -15,4 +15,21 @@ class ScanRecord < ApplicationRecord
 	    	file.close
 	    end
 	end
+
+	def get_qrcode
+	    gzh_config = self.shop.gzh_config
+	    if gzh_config
+	      result = JSON.parse(Wechat.get_qrcode(gzh_config.token,"QR_SCENE",7200,self.id))
+	      if result['ticket']
+		 result['url']
+	      end
+	    end
+	end
+
+	def get_media_id
+	   if Time.now - record.updated_at > Settings.tmp_media_expire_time 	
+		self.upload_media
+	   end
+	   self.media_id
+	end
 end
