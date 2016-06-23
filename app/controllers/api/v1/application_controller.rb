@@ -30,7 +30,7 @@ class Api::V1::ApplicationController < ApplicationController
 	end
 	
 	def api_success(result,status = 200)
-	    render json: %{{"#{Settings.return_json_status_name}":#{statu},"#{Settings.return_success_result_name}":"#{result}"}}
+	    render json: %{{"#{Settings.return_json_status_name}":#{status},"#{Settings.return_success_result_name}":"#{result}"}}
 
 	end
 

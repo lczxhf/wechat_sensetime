@@ -2,7 +2,7 @@ zh-CN:
   returnCode:
     code_200: 'chenggong'                                                                            
     code_1001: 'canshu chucuo'                                                                      
-    code_1002: 'yonghu meiyou quanxian qu shouquan weixin gongzhonghao'                             
+    code_1002: 'yonghu meiyou quanxian'
     code_1003: 'ni shang chuan de wenjian chaoguo guding de daxiao'                                 
     code_1004: 'zhi jieshou jpg he jpeg geshi de tupian'                                            
     code_1005: "ci gongzhonghao mieyou quanxina caozuo "                                            

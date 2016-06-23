@@ -27,7 +27,7 @@ class Api::V1::Fashion::WeixinController < Api::V1::ApplicationController
 	check_file :upload, required: true,max_size:1024, file_type: ['jpg','jpeg']
 	#record = ScanRecord.create(shop_id:params[:shop_id],image_path:params[:upload],randCode:params[:randCode])
  	#UploadImgToWechatJob.perform_later(record.id)	
-	render json: api_success("success")
+	api_success("success")
     end
 
     def upload_without_randcode
@@ -36,7 +36,7 @@ class Api::V1::Fashion::WeixinController < Api::V1::ApplicationController
 	#record = ScanRecord.create(shop_id:params[:shop_id],image_path:params[:upload])
 	#url = record.get_qrcode	
  	#UploadImgToWechatJob.perform_later(record.id)	
-	render json: api_success(url)
+	api_success(url)
     end
 
 end

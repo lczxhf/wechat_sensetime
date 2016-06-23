@@ -10,10 +10,14 @@ class Api::V1::AuthTokensController < Api::V1::ApplicationController
 		param! :shop_id, Integer, required: true
 		shop = Shop.find(params[:shop_id]) rescue nil
 		if shop
-		  token = create_jwt(shop)
-		  api_success(token)
+		    if shop.can_authorize?
+		        token = create_jwt(shop)
+		        api_success(token)
+		    else
+			api_error(I18n.t("returnCode.code_1002"),1002)
+		    end
 		else
-		  api_error("can not find shop by id",1001) 
+			api_error(I18n.t("returnCode.code_1001"),1001) 
 		end
 	end
 

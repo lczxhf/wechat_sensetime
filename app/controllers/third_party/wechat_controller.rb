@@ -1,17 +1,20 @@
 class ThirdParty::WechatController < ThirdParty::ApplicationController
 	def home
-		shop = Shop.find(params[:id])
-		if shop.can_authorize?
+		shop = Shop.find(params[:id]) rescue nil
+		if shop
+		    if shop.can_authorize?
 			@url="https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=#{APPID}&pre_auth_code=#{Rails.cache.read(:pre_code)}&redirect_uri=#{Settings.website_url}/third_party/wechat/auth_code?id=#{params[:id]}"
  	 		render html: @url
- 	 	else
+ 	 	    else
  	 		#TODO
  	 		render plain: I18n.t("returnCode.code_1002")
- 	 	end
+ 	 	    end
+		else
+		    render plain: I18n.t("returnCode.code_1001")
+		end
 	end
 
 	def receive
-		puts params
 		if result = ThirdParty.get_content(request.body.read,params[:timestamp],params[:nonce],params[:msg_signature])
 			case result.xml.InfoType.content.to_s
 				when "component_verify_ticket" then
